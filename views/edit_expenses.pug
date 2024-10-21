@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+    .container
+        h1 #{title}
+        form(action="/edit/"+expenses._id method="post")
+            #form-group 
+                label.fw-bold Title 
+                input.form-control(type="text", name="title",value=expenses.title)
+            #form-group 
+                label Amount 
+                input.form-control(type='number', name="amount",value=expenses.amount)
+            #form-group 
+                label Category 
+                input.form-control(type="text", name="category",value=expenses.category)
+            input.btn.btn-primary.mt-2(type="submit", value="submit")

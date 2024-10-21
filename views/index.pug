@@ -1,0 +1,34 @@
+extends layout 
+
+block content 
+    .container
+        h1 #{title}
+        table.table
+            thead
+                tr
+                    th(scope='col') Title
+                    |       
+                    th(scope='col') Amount
+                    |       
+                    th(scope='col') Category
+                    |       
+                    th(scope='col') Date
+                    |       
+                    th(scope='col') Action
+                |   
+            tbody
+            each expense, i in expenses
+                tr
+                    th(scope='row')= expense.title
+                    |       
+                    td= expense.amount
+                    |       
+                    td= expense.category
+                    |       
+                    td= expense.createdAt.toDateString()
+                    |       
+                    td
+                        a.btn.btn-warning.mr-2(href='/edit/'+expense._id, role='button') Edit
+                        a.btn.btn-danger(role='button' href='/delete/'+expense._id) Delete
+                |        
+        a.btn.btn-primary(href='/add', role='button') Add New Expense
